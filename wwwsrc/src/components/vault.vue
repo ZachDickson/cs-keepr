@@ -1,9 +1,9 @@
 <template>
   <div class="col-3">
-    <div class="text-right">
-      <button @click="deleteVault" class="btn btn-danger"></button>
-    </div>
     <div id="keepCard" class="card mb-3 shadow p-3 mb-5 bg-black rounded">
+      <div class="card-overlay text-right">
+        <button @click="deleteVault" class="btn-danger">X</button>
+      </div>
       <router-link to="/currentVault">
         <h3 @click="setCurrentVault" class="card-header">{{vaultProp.name}}</h3>
       </router-link>

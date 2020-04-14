@@ -41,7 +41,7 @@ namespace Keepr.Services
       {
         throw new Exception("create failed");
       }
-      return _repo.Create(newVault);
+      return created;
     }
 
 

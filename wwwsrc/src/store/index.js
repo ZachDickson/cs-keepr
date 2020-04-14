@@ -36,11 +36,12 @@ export default new Vuex.Store({
     },
 
     createKeep(state, keep) {
-      state.publicKeeps.push(keep)
+      state.keeps.push(keep)
     },
 
     deleteKeep(state, keepId) {
       state.publicKeeps = state.publicKeeps.filter(pk => pk.id != keepId)
+      state.keeps = state.keeps.filter(k => k.id != keepId)
     },
 
     setVaults(state, vaults) {
@@ -102,7 +103,7 @@ export default new Vuex.Store({
     async getKeepsByVaultId({ commit }, vault) {
       try {
         let res = await api.get(`vaults/${vault.id}/keeps`)
-        let currentVault = this.state.currentVault
+        let currentVault = vault
         currentVault.keeps = res.data
         commit("setCurrentVault", currentVault)
       } catch (error) {

@@ -1,8 +1,9 @@
 <template>
   <div class="col-3">
-    <button @click="deleteKeep" class="btn btn-danger"></button>
-    <div class="text-right"></div>
     <div id="keepCard" class="card mb-3 shadow p-3 mb-5 bg-black rounded">
+      <div class="card-overlay text-right">
+        <button id="deleteButton" @click="deleteKeep" class="btn-danger">X</button>
+      </div>
       <h3 class="card-header">{{keepProp.name}}</h3>
       <img
         style="height: 10rem; width: 100%; display: block;"
@@ -20,7 +21,7 @@
 
       <div class="dropdown">
         <button
-          class="btn btn-success dropdown-toggle"
+          class="btn dropdown-toggle"
           type="button"
           id="dropdownMenuButton"
           data-toggle="dropdown"
@@ -50,12 +51,14 @@ export default {
   computed: {
     vaults() {
       return this.$store.state.vaults;
+      return this.$store.state.keeps;
     }
   },
 
   methods: {
     deleteKeep() {
       this.$store.dispatch("deleteKeep", this.keepProp.id);
+      this.$store.commit("getUserKeeps");
     },
 
     addKeepToVault(vaultId) {
@@ -73,4 +76,11 @@ export default {
 </script>
 
 <style>
+.dropdown-item {
+  cursor: default;
+}
+
+#deleteButton {
+  margin-left: 88%;
+}
 </style>

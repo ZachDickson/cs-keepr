@@ -19,8 +19,7 @@ export default {
   name: "currentVault",
 
   mounted() {
-    // return this.$store.state.currentVault;
-    console.log(this.keepData);
+    return this.$store.state.currentVault;
   },
 
   computed: {
