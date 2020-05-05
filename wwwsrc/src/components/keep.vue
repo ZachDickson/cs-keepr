@@ -1,9 +1,7 @@
 <template>
   <div class="col-3">
     <div id="keepCard" class="card mb-3 shadow p-3 mb-5 bg-black rounded">
-      <div class="card-overlay text-right">
-        <button id="deleteButton" @click="deleteKeep" class="btn-danger">X</button>
-      </div>
+      <div class="card-overlay text-right"></div>
       <h3 class="card-header">{{keepProp.name}}</h3>
       <img
         style="height: 10rem; width: 100%; display: block;"
@@ -35,6 +33,7 @@
             class="dropdown-item"
           >Add to {{vault.name}}</a>
         </div>
+        <div id="delete" @click="deleteKeep" class="text-danger">Delete Keep</div>
       </div>
     </div>
   </div>
@@ -80,7 +79,7 @@ export default {
   cursor: default;
 }
 
-#deleteButton {
-  margin-left: 88%;
+#delete {
+  cursor: pointer;
 }
 </style>
